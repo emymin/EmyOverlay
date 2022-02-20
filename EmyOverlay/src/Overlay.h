@@ -1,6 +1,8 @@
 #pragma once
 #include <openvr.h>
 #include <stdio.h>
+#include <string>
+#include "Engine/Console.h"
 using namespace vr;
 class Overlay
 {
@@ -13,7 +15,8 @@ public:
 		VROverlay()->SetOverlayFromFile(m_Handle, path.c_str());
 	}
 	void SetTexture(vr::Texture_t* texture) {
-		VROverlay()->SetOverlayTexture(m_Handle, texture);
+		auto error = VROverlay()->SetOverlayTexture(m_Handle, texture);
+		//Console::Log(std::to_string(error));
 	}
 
 
@@ -21,7 +24,8 @@ public:
 		VROverlay()->SetOverlayWidthInMeters(m_Handle,width);
 	}
 	void Show() {
-		VROverlay()->ShowOverlay(m_Handle);
+		vr::EVROverlayError error = VROverlay()->ShowOverlay(m_Handle);
+		//Console::Log(std::to_string(error));
 	}
 
 	void SetTransform(HmdMatrix34_t& transform) {

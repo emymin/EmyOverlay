@@ -13,9 +13,8 @@ int main(int argc, char** argv) {
     VR_Init(&error, vr::VRApplication_Overlay);
     check_error(__LINE__, error);
 
-    Overlay overlay("test");
+    Overlay overlay("EmyOverlay");
     overlay.SetWidth(1);
-    overlay.Show();
 
     vr::HmdMatrix34_t transform = {
         1.0f, 0.0f, 0.0f, 0.0f,
@@ -25,14 +24,15 @@ int main(int argc, char** argv) {
     overlay.SetTransform(transform);
 
     OpenGLContext context;
-    FrameBuffer buffer(1000, 1000);
+    FrameBuffer buffer(1000, 1000,GL_RGBA,GL_RGBA8);
    
 
     vr::EColorSpace colorSpace = vr::ColorSpace_Gamma;
     vr::ETextureType textureType = vr::TextureType_OpenGL;
-    vr::Texture_t frameTexture = { (void*)(buffer.GetTexture()->GetRendererID()),textureType,colorSpace };
+    vr::Texture_t frameTexture = { (void*)(uintptr_t)(buffer.GetTexture()->GetRendererID()),textureType,colorSpace };
 
     overlay.SetTexture(&frameTexture);
+    
     overlay.Show();
 
     while (!context.ShouldClose()) {
@@ -61,6 +61,9 @@ int main(int argc, char** argv) {
             GL_COLOR_BUFFER_BIT, GL_NEAREST);
 
 
+        overlay.SetTexture(&frameTexture);
+
+       // overlay.Show();
 
         glfwSwapBuffers(context.window);
         glfwPollEvents();
