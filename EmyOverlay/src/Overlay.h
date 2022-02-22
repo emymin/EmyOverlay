@@ -8,7 +8,10 @@ class Overlay
 {
 public:
 	Overlay(std::string name) {
-		VROverlay()->CreateOverlay(name.c_str(), name.c_str(), &m_Handle);
+		//VROverlay()->CreateOverlay(name.c_str(), name.c_str(), &m_Handle);
+		VROverlay()->CreateDashboardOverlay(name.c_str(), name.c_str(), &m_Handle,&m_thumbnailHandle);
+		VROverlay()->SetOverlayInputMethod(m_Handle, vr::VROverlayInputMethod_Mouse);
+
 	}
 
 	void SetImage(std::string path) {
@@ -32,7 +35,8 @@ public:
 		VROverlay()->SetOverlayTransformAbsolute(m_Handle, TrackingUniverseStanding, &transform);
 	}
 
-private:
 	VROverlayHandle_t m_Handle;
+	VROverlayHandle_t m_thumbnailHandle;
+private:
 };
 

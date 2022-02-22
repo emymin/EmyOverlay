@@ -25,6 +25,7 @@ int main(int argc, char** argv) {
 
     OpenGLContext context;
     FrameBuffer buffer(1000, 1000,GL_RGBA,GL_RGBA8);
+
    
 
     vr::EColorSpace colorSpace = vr::ColorSpace_Gamma;
@@ -40,11 +41,31 @@ int main(int argc, char** argv) {
         buffer.Bind();
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
+        //Console::Log(std::to_string(io.MousePos.x) + " " + std::to_string(io.MousePos.y));
+
 
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-
+        
+        vr::VREvent_t event;
+        while (vr::VROverlay()->PollNextOverlayEvent(overlay.m_Handle, &event, sizeof(event))) {
+            switch (event.eventType) {
+            case vr::VREvent_MouseMove: {
+                //Console::Log(std::to_string(event.data.mouse.x)+" "+std::to_string(event.data.mouse.y));
+                
+                ImGui::GetIO().AddMousePosEvent(event.data.mouse.x*1000, event.data.mouse.y*1000);
+                break;
+            }
+            case vr::VREvent_MouseButtonDown: {
+                ImGui::GetIO().AddMouseButtonEvent(0, true);
+            }
+            case vr::VREvent_MouseButtonUp: {
+                ImGui::GetIO().AddMouseButtonEvent(0, false);
+            }
+            }
+        }
         ImGui::ShowDemoWindow();
 
         ImGui::Render();
