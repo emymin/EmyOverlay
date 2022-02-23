@@ -146,6 +146,8 @@
     <ClCompile Include="src\Engine\Texture.cpp" />
     <ClCompile Include="src\Overlay.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Utils\Matrices.cpp" />
+    <ClCompile Include="src\Utils\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Console.h" />
@@ -154,6 +156,9 @@
     <ClInclude Include="src\Engine\RenderBuffer.h" />
     <ClInclude Include="src\Engine\Texture.h" />
     <ClInclude Include="src\Overlay.h" />
+    <ClInclude Include="src\Utils\Matrices.h" />
+    <ClInclude Include="src\Utils\Util.h" />
+    <ClInclude Include="src\Utils\Vectors.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

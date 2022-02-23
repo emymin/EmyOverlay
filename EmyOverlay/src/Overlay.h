@@ -8,8 +8,8 @@ class Overlay
 {
 public:
 	Overlay(std::string name) {
-		//VROverlay()->CreateOverlay(name.c_str(), name.c_str(), &m_Handle);
-		VROverlay()->CreateDashboardOverlay(name.c_str(), name.c_str(), &m_Handle,&m_thumbnailHandle);
+		VROverlay()->CreateOverlay(name.c_str(), name.c_str(), &m_Handle);
+		//VROverlay()->CreateDashboardOverlay(name.c_str(), name.c_str(), &m_Handle,&m_thumbnailHandle);
 		VROverlay()->SetOverlayInputMethod(m_Handle, vr::VROverlayInputMethod_Mouse);
 
 	}
