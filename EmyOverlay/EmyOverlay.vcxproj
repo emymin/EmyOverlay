@@ -141,7 +141,7 @@
   <ItemGroup>
     <ClCompile Include="src\Engine\RenderBuffer.cpp" />
     <ClCompile Include="src\Overlay\OverlayManager.cpp" />
-    <ClCompile Include="src\MainOverlay.cpp" />
+    <ClCompile Include="src\Overlays\MainOverlay.cpp" />
     <ClCompile Include="src\Overlay\ImGuiOverlay.cpp" />
     <ClCompile Include="src\Overlay\OpenGLOverlay.cpp" />
     <ClCompile Include="src\Engine\Console.cpp" />
@@ -156,7 +156,7 @@
   <ItemGroup>
     <ClInclude Include="src\Engine\RenderBuffer.h" />
     <ClInclude Include="src\Overlay\OverlayManager.h" />
-    <ClInclude Include="src\MainOverlay.h" />
+    <ClInclude Include="src\Overlays\MainOverlay.h" />
     <ClInclude Include="src\Overlay\ImGuiOverlay.h" />
     <ClInclude Include="src\Overlay\OpenGLOverlay.h" />
     <ClInclude Include="src\Engine\Console.h" />

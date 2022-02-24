@@ -9,5 +9,6 @@ public:
 	void Draw();
 private:
 	std::vector<Overlay*> m_Overlays;
+	bool m_isMousePressed;
 };
 

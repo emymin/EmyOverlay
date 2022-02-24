@@ -1,8 +1,8 @@
-#include "Overlay/ImGuiOverlay.h"
+#include "../Overlay/ImGuiOverlay.h"
 
 class MainOverlay : public ImGuiOverlay {
 public:
-	MainOverlay() : ImGuiOverlay("Main", 1000, 1000){}
+	MainOverlay(std::string name) : ImGuiOverlay(name, 1000, 1000){}
 	virtual void OnGui() override
 	{
 		ImGui::ShowDemoWindow();

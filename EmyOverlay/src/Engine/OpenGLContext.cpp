@@ -53,6 +53,8 @@ void OpenGLContext::InitGL(uint32_t width,uint32_t height)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); //offscreen rendering
+
 	window = glfwCreateWindow(width,height, "test", NULL, NULL);
 	if (window == NULL) {
         Console::Error("Error creating window");

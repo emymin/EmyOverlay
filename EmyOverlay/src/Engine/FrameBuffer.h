@@ -8,7 +8,6 @@ private:
 	unsigned int m_RendererID;
 	RenderBuffer m_DepthStencilBuffer;
 	Texture m_ColorTexture;
-	FrameBuffer(){}
 	unsigned int m_InternalFormat;
 	unsigned int m_Format;
 	unsigned int m_Width, m_Height;

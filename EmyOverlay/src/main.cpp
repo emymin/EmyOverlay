@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "MainOverlay.h"
+#include "Overlays/MainOverlay.h"
 #include "Overlay/OverlayManager.h"
 #include "Engine/OpenGLContext.h"
 
@@ -17,12 +17,18 @@ int main(int argc, char** argv) {
 
     OverlayManager manager;
 
-    MainOverlay overlay;
+    MainOverlay overlay("main");
     overlay.SetWidth(1);
     overlay.Show();
 
-    manager.RegisterOverlay(&overlay);
+    vr::HmdMatrix34_t transform = {
+    1.0f, 0.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f, 1.0f,
+    0.0f, 0.0f, 1.0f, -2.0f
+    };
 
+
+    manager.RegisterOverlay(&overlay);
 
     
     while (!context.ShouldClose()) {

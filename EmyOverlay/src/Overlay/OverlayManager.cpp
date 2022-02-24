@@ -28,29 +28,32 @@ void OverlayManager::Update()
         }
     }
 
-    vr::VRControllerState_t state;
-    vr::VRSystem()->GetControllerState(2, &state, sizeof(vr::VRControllerState_t));
-    bool isTriggerPressed = (state.ulButtonPressed & vr::ButtonMaskFromId(vr::EVRButtonId::k_EButton_SteamVR_Trigger)) != 0;
+    if (VROverlay()->IsDashboardVisible()) {
+        vr::VREvent_t event;
+        while (vr::VROverlay()->PollNextOverlayEvent(closest_overlay->m_Handle, &event, sizeof(event))) {
+            switch (event.eventType) {
 
-    closest_overlay->m_mousePos = closest_intersection.pos;
-    closest_overlay->m_isMousePressed = isTriggerPressed;
-
-    vr::VREvent_t event;
-    while (vr::VROverlay()->PollNextOverlayEvent(closest_overlay->m_Handle, &event, sizeof(event))) {
-        switch (event.eventType) {
-        case vr::VREvent_MouseMove: {
-
-            //ImGui::GetIO().AddMousePosEvent(event.data.mouse.x*1000, event.data.mouse.y*1000);
-            break;
-        }
-        case vr::VREvent_MouseButtonDown: {
-            closest_overlay->m_isMousePressed = true;
-        }
-        case vr::VREvent_MouseButtonUp: {
-            closest_overlay->m_isMousePressed = false;
-        }
+            case vr::VREvent_MouseButtonDown: {
+                m_isMousePressed = true;
+            }
+            case vr::VREvent_MouseButtonUp: {
+                m_isMousePressed = false;
+            }
+            }
         }
     }
+    else {
+        vr::VRControllerState_t state;
+        vr::VRSystem()->GetControllerState(2, &state, sizeof(vr::VRControllerState_t));
+        bool isTriggerPressed = (state.ulButtonPressed & vr::ButtonMaskFromId(vr::EVRButtonId::k_EButton_SteamVR_Trigger)) != 0;
+        m_isMousePressed = isTriggerPressed;
+    }
+
+
+
+    closest_overlay->m_mousePos = closest_intersection.pos;
+    closest_overlay->m_isMousePressed = m_isMousePressed;
+
 }
 
 void OverlayManager::Draw()

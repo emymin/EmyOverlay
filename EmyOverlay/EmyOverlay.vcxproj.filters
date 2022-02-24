@@ -45,7 +45,7 @@
     <ClCompile Include="src\Overlay\ImGuiOverlay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\MainOverlay.cpp">
+    <ClCompile Include="src\Overlays\MainOverlay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Overlay\OverlayManager.cpp">
@@ -86,7 +86,7 @@
     <ClInclude Include="src\Overlay\ImGuiOverlay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\MainOverlay.h">
+    <ClInclude Include="src\Overlays\MainOverlay.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Overlay\OverlayManager.h">
