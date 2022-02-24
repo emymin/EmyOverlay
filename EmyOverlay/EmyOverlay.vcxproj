@@ -139,23 +139,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Engine\RenderBuffer.cpp" />
+    <ClCompile Include="src\Overlay\OverlayManager.cpp" />
+    <ClCompile Include="src\MainOverlay.cpp" />
+    <ClCompile Include="src\Overlay\ImGuiOverlay.cpp" />
+    <ClCompile Include="src\Overlay\OpenGLOverlay.cpp" />
     <ClCompile Include="src\Engine\Console.cpp" />
     <ClCompile Include="src\Engine\FrameBuffer.cpp" />
     <ClCompile Include="src\Engine\OpenGLContext.cpp" />
-    <ClCompile Include="src\Engine\RenderBuffer.cpp" />
     <ClCompile Include="src\Engine\Texture.cpp" />
-    <ClCompile Include="src\Overlay.cpp" />
+    <ClCompile Include="src\Overlay\Overlay.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Utils\Matrices.cpp" />
     <ClCompile Include="src\Utils\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Engine\RenderBuffer.h" />
+    <ClInclude Include="src\Overlay\OverlayManager.h" />
+    <ClInclude Include="src\MainOverlay.h" />
+    <ClInclude Include="src\Overlay\ImGuiOverlay.h" />
+    <ClInclude Include="src\Overlay\OpenGLOverlay.h" />
     <ClInclude Include="src\Engine\Console.h" />
     <ClInclude Include="src\Engine\FrameBuffer.h" />
     <ClInclude Include="src\Engine\OpenGLContext.h" />
-    <ClInclude Include="src\Engine\RenderBuffer.h" />
     <ClInclude Include="src\Engine\Texture.h" />
-    <ClInclude Include="src\Overlay.h" />
+    <ClInclude Include="src\Overlay\Overlay.h" />
     <ClInclude Include="src\Utils\Matrices.h" />
     <ClInclude Include="src\Utils\Util.h" />
     <ClInclude Include="src\Utils\Vectors.h" />

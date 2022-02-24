@@ -5,7 +5,7 @@
 FrameBuffer::FrameBuffer(unsigned int width, unsigned int height, unsigned int format, unsigned int internal_format) : m_InternalFormat(internal_format),m_Format(format),m_Width(width),m_Height(height)
 {
 	glGenFramebuffers(1, &m_RendererID);
-	Resize(width, height);
+	Resize(m_Width, m_Height);
 }
 
 void FrameBuffer::Bind() const
