@@ -87,7 +87,16 @@ int main(int argc, char** argv) {
         float y = (results.vUVs.v[1])*1000;
         ImGui::GetIO().AddMousePosEvent(x, y);
 
+        vr::VRControllerState_t state;
+        vr::VRSystem()->GetControllerState(2, &state, sizeof(vr::VRControllerState_t));
+        bool isTriggerPressed = (state.ulButtonPressed & vr::ButtonMaskFromId(vr::EVRButtonId::k_EButton_SteamVR_Trigger)) != 0;
 
+        if (isTriggerPressed) {
+            ImGui::GetIO().AddMouseButtonEvent(0, true);
+        }
+        else {
+            ImGui::GetIO().AddMouseButtonEvent(0, false);
+        }
 
         vr::VREvent_t event;
         while (vr::VROverlay()->PollNextOverlayEvent(overlay.m_Handle, &event, sizeof(event))) {
@@ -110,6 +119,7 @@ int main(int argc, char** argv) {
         ImGui::Text("Controller Pos: %.4f %.4f %.4f",pos.x,pos.y,pos.z);
         ImGui::Text("Controller Forward: %.4f %.4f %.4f",forward.x,forward.y,forward.z);
         ImGui::Text("Intersects: %d at %.4f %.4f", intersects, x, y);
+        ImGui::Text("Is trigger pressed: %d", isTriggerPressed);
 
         ImGui::End();
 
