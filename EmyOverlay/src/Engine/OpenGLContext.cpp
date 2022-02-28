@@ -46,14 +46,16 @@ void APIENTRY glDebugOutput(GLenum source,
     }
 }
 
-void OpenGLContext::InitGL(uint32_t width,uint32_t height)
+void OpenGLContext::InitGL(uint32_t width,uint32_t height,bool showWindow)
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); //offscreen rendering
+    if (!showWindow) {
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); //offscreen rendering
+    }
 
 	window = glfwCreateWindow(width,height, "test", NULL, NULL);
 	if (window == NULL) {

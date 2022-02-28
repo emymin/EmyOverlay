@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     EVRInitError error;
     VR_Init(&error, vr::VRApplication_Overlay);
     check_error(__LINE__, error);
-    OpenGLContext context;
+    OpenGLContext context(true);
 
     OverlayManager manager;
 

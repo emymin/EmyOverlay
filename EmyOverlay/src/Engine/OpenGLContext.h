@@ -8,8 +8,8 @@
 class OpenGLContext
 {
 public:
-	OpenGLContext() {
-		InitGL(1000,1000);
+	OpenGLContext(bool showWindow=false) {
+		InitGL(1000,1000,showWindow);
 	}
 	~OpenGLContext() {
 		Destroy();
@@ -20,7 +20,7 @@ public:
 	}
 	GLFWwindow* window;
 private:
-	void InitGL(uint32_t width,uint32_t height);
+	void InitGL(uint32_t width,uint32_t height,bool showWindow);
 	void Destroy();
 };
 

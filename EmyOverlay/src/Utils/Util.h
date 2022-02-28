@@ -7,6 +7,9 @@
 #define NOMINMAX
 #include <windows.h>
 #include <d3d11.h>
+#include <ctime>
+#include <chrono>
+#include <sstream>
 
 #include "Matrices.h"
 
@@ -34,3 +37,5 @@ template <typename T> int sgn(T val)
 { 
     return (T(0) < val) - (val < T(0));
 }
+
+std::string GetTimeString();

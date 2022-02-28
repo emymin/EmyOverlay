@@ -229,3 +229,13 @@ vr::EVROverlayError SetSharedOverlayTexture(vr::VROverlayHandle_t ovrl_handle_so
 
     return ovrl_error;
 }
+
+std::string GetTimeString() {
+    time_t now_utc = std::time(0);
+    tm timeinfo;
+    localtime_s(&timeinfo, &now_utc);
+    auto time = std::put_time(&timeinfo, "%F %T");
+    std::stringstream ss;
+    ss << time;
+    return ss.str();
+}
